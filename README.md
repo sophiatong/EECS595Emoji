@@ -3,7 +3,9 @@
 ## Standardized Virtual Environment and Dependencies:
 
 module load python/3.9.12 cuda/11.6.2
+
 python3 -m venv [env_name]
+
 source ./[env_name]/bin/activate
 
 pip install torch==1.13.0
