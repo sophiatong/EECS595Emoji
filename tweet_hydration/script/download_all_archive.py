@@ -42,11 +42,14 @@ def download_tweet_archive(year_month, month_year_dl_dict, download_path, downlo
         archive_ym = ia.get_item(archive_ym_str)
         # download tar file
         archive_ym_tar_filename = f"archiveteam-twitter-stream-{archive_year}-{archive_month}.tar"
-        archive_ym.download(
-            archive_ym_tar_filename, 
-            destdir = download_path_ym,
-            dry_run = dry_run
-        )
+        try:
+            archive_ym.download(
+                archive_ym_tar_filename, 
+                destdir = download_path_ym,
+                dry_run = dry_run
+            )
+        except Exception as e:
+            print(f"EXCEPTION: {e} FOR FILE {archive_ym_tar_filename}")
     elif dl_type in std_YYYY_MM_DD:
         # create internet archive item
         archive_ym_str = f"archiveteam-twitter-stream-{archive_year}-{archive_month}"
@@ -78,11 +81,14 @@ def download_tweet_archive(year_month, month_year_dl_dict, download_path, downlo
                 dl_tars.append(tar_name)
         # download each tar 
         for filename in dl_tars:
-            archive_ym.download(
-                filename,
-                destdir = download_path_ym,
-                dry_run = dry_run
-            )
+            try:
+                archive_ym.download(
+                    filename,
+                    destdir = download_path_ym,
+                    dry_run = dry_run
+                )
+            except Exception as e:
+                print(f"EXCEPTION: {e} FOR FILE {filename}")
     elif dl_type in overlap_months:
         if dl_type[:9] == 'in2017-11':
             # create internet archive item
@@ -120,12 +126,14 @@ def download_tweet_archive(year_month, month_year_dl_dict, download_path, downlo
                     dl_tars.append(tar_name)
         # download list of valid tars
         for filename in dl_tars:
-            archive_ym.download(
-                filename,
-                destdir = download_path_ym,
-                dry_run = dry_run
-            )
-    
+            try:
+                archive_ym.download(
+                    filename,
+                    destdir = download_path_ym,
+                    dry_run = dry_run
+                )
+            except Exception as e:
+                print(f"EXCEPTION: {e} FOR FILE {filename}")
     
     return f"DONE downloading {year_month} archive"
 
