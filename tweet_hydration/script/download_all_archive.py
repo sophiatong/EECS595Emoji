@@ -35,7 +35,6 @@ def download_tweet_archive(year_month, month_year_dl_dict, download_path, downlo
         'in2019-08/twitter_stream_YYYY_MM_DD.tar'
     ]
 
-
     if dl_type in std_YYYY_MM:
         # create internet archive item
         archive_ym_str = f"archiveteam-twitter-stream-{archive_year}-{archive_month}"
@@ -192,7 +191,7 @@ def main(params):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Rehydrate tweets")
+    parser = argparse.ArgumentParser(description="Download archive")
     parser.add_argument("--tm_senti_path", type=str, default="/home/emanwong/eecs595/final_proj/tm_senti_dataset")
     parser.add_argument("--download_path", type=str, default="/scratch/eecs595f22_class_root/eecs595f22_class/emanwong/archive_downloads")
     parser.add_argument("--download_mode", type=str, default="download")
