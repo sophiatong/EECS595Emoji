@@ -16,8 +16,6 @@ pip install pandas
 
 pip install tdqm
 
-pip install tdqm
-
 pip install python-csv
 
 pip install matplotlib
